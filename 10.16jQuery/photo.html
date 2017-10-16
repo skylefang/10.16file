@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="iconfont/iconfont.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        html,body{
+            width:100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        ul{
+            width: 920px;
+            height: 410px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        li{
+            width: 300px;
+            height: 200px;
+
+        }
+        li>img{
+            width:100%;
+            height: 100%;
+        }
+        div.mask{
+            width:600px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top:0;
+            right: 0;
+            bottom:0;
+            margin: auto;
+            box-shadow: 0 0 0 1000px rgba(0,0,0,1);
+            transform: scale(0,0);
+            transition: .5s;
+        }
+        div.mask img{
+            display: block;
+            width:100%;
+            height: 100%;
+        }
+        div.mask.active{
+            transform: scale(1,1);
+        }
+        .close{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            border-radius: 50%;
+            /*background: red;*/
+            overflow: hidden;
+            top:-25px;
+            right: -25px;
+            font-size: 50px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 50px;
+        }
+        .btnL{
+            width:60px;
+            height: 60px;
+            position: absolute;
+            top:calc(50% - 30px);
+            /*background: rgba(255,255,255,0.5);*/
+            left: -160px;
+            text-align: center;
+            line-height: 60px;
+            color: #e8e4e3;
+        }
+        .btnR{
+            width:60px;
+            height: 60px;
+            position: absolute;
+            top:calc(50% - 30px);
+            /*background: rgba(255,255,255,0.5);*/
+            right: -160px;
+            text-align: center;
+            line-height: 60px;
+            color: #e8e4e3;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="img/1.jpg" alt=""></li>
+    <li><img src="img/2.jpg" alt=""></li>
+    <li><img src="img/3.jpg" alt=""></li>
+    <li><img src="img/4jpg.jpg" alt=""></li>
+    <li><img src="img/5.jpg" alt=""></li>
+    <li><img src="img/6.jpg" alt=""></li>
+
+
+</ul>
+<div class="mask">
+    <div class="close"><i class="iconfont icon-guanbi"></i></div>
+    <div class="btnL"><i class="iconfont icon-icon-right"></i></div>
+    <div class="btnR"><i class="iconfont icon-zuoyoujiantou-copy-copy-copy-copy"></i></div>
+    <img src="img/1.jpg" alt="">
+</div>
+<script>
+    $(function(){
+       let lis = $('ul>li');
+       let mask = $('div.mask');
+       let close = $('div.close');
+       let mImg = $('img',mask);
+       let btnL = $('div.btnL');
+       let btnR = $('div.btnR');
+       let index;
+        lis.on('click',function(){
+            index = $(this).index();
+            let src = $(this).find('img').attr('src');
+            mImg.attr('src',src);
+            mask.addClass('active');
+        })
+        close.click(function(){
+            mask.removeClass('active');
+        })
+        btnL.on('click',function(){
+            index--;
+            if(index==0){
+                index = 5;
+                return;
+            }
+            let src = lis.eq(index).find('img').attr('src');
+            mImg.attr('src',src);
+        })
+        btnR.on('click',function(){
+            index++;
+            if(index > 5){
+                index = 0;
+                return;
+            }
+            let src = lis.eq(index).find('img').attr('src');
+            mImg.attr('src',src);
+        })
+    })
+</script>
+</body>
+</html>

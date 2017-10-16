@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jqyery 练习</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+        ul{
+            width: 900px;
+            height: 160px;
+            border: 1px solid #a3a29d;
+            display: flex;
+            justify-content: space-between;
+            margin: 60px auto;
+        }
+        li{
+            width: 200px;
+            height: 150px;
+            margin: 5px;
+            border: 1px solid #0FA7F7;
+        }
+        .radius{
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<ul class="box">
+    <li class="li1" id="li11"></li>
+    <li class="li2"></li>
+    <li class="li3"></li>
+    <li class="li4"></li>
+</ul>
+<ul class="box">
+    <li class="li1"></li>
+    <li class="li2 li22"></li>
+    <li class="li3"></li>
+    <li class="li4"></li>
+</ul>
+<ul class="box">
+    <li class="li1"></li>
+    <li class="li2"></li>
+    <li class="li3"></li>
+    <li class="li4"></li>
+</ul>
+<script>
+    $(function(){
+      /* $('li').css('background','red').html('这是一个li');
+        $('ul > li').on('click',function(){
+           $(this).animate({height:'+=50'});
+
+       })
+        $('#li11').css({background:'yellow'});
+        $('.li4').html('这是第四个li标签');
+        $('.box .li22').css('height','+=50');
+        let element = $('ul > li');
+        console.log(element);*/
+        $('li22 + li3').on('mouseover',function(){
+            $(this).animate({background:'pink',height:'+=50'});
+        })
+        $('li22 + li3').on('mouseout',function(){
+            $(this).animate({background:'red',height:'-=50'});
+        })
+    })
+</script>
+
+</body>
+</html>
